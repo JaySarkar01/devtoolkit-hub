@@ -2,14 +2,7 @@
 
 import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
-import {
-  Search,
-  Sparkles,
-  ArrowRight,
-  Zap,
-  Shield,
-  Globe,
-} from "lucide-react";
+import { Search, Sparkles, ArrowRight, Zap, Shield, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import ToolCard from "@/components/tool-card";
@@ -118,10 +111,7 @@ export default function HomePage() {
             className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-16 max-w-3xl mx-auto"
           >
             {FEATURES.map((f, i) => (
-              <div
-                key={i}
-                className="glass-card p-5 flex items-center gap-3"
-              >
+              <div key={i} className="glass-card p-5 flex items-center gap-3">
                 <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
                   <f.icon className="w-5 h-5 text-primary" />
                 </div>
