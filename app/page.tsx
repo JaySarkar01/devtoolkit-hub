@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import ToolCard from "@/components/tool-card";
 import { TOOLS, TOOL_CATEGORIES, searchTools } from "@/lib/tools-registry";
+import { useAuth } from "@/lib/auth-context";
 
 const FEATURES = [
   {
@@ -29,6 +30,7 @@ const FEATURES = [
 export default function HomePage() {
   const [search, setSearch] = useState("");
   const [activeCategory, setActiveCategory] = useState("all");
+  const { user } = useAuth();
 
   const filteredTools = useMemo(() => {
     let results = search ? searchTools(search) : TOOLS;
@@ -97,9 +99,15 @@ export default function HomePage() {
                   <ArrowRight className="w-4.5 h-4.5" />
                 </a>
               </Button>
-              <Button variant="outline" size="lg" className="text-base" asChild>
-                <a href="/register">Create Account</a>
-              </Button>
+              {user ? (
+                <div className="text-sm font-medium text-muted-foreground border border-muted-foreground/20 px-6 py-4 rounded-lg">
+                  Wellcome <span className="text-foreground font-semibold">{user.name}</span>
+                </div>
+              ) : (
+                <Button variant="outline" size="lg" className="text-base" asChild>
+                  <a href="/register">Create Account</a>
+                </Button>
+              )}
             </div>
           </motion.div>
 
